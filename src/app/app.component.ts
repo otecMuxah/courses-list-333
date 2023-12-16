@@ -8,3 +8,10 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'e-learn-dev';
 }
+
+export const ToastrOptions = {
+  positionClass: 'toast-top-center',
+  closeButton: false,
+  tapToDismiss: false,
+  enableHtml: true
+};
