@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-page-not-found',
@@ -7,5 +8,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PageNotFoundComponent {
+  constructor(private router: Router,) {
+  }
 
+  toMainPage() {
+    this.router.navigate(['courses']);
+  }
 }
