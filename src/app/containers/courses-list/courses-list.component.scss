@@ -5,7 +5,6 @@
 
 .wrapper {
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
   height: 100%;
@@ -16,6 +15,15 @@
     font-size: 24px;
     color: var(--dark-blue);
     margin-bottom: 24px;
+    margin-top: 24px;
+  }
+
+  .course-title {
+    color: var(--main-color);
+  }
+
+  .instructors {
+    font-weight: 500;
   }
 
   .content {
@@ -34,6 +42,10 @@
       color: var(--dark-blue);
       font-weight: bold;
       font-size: 16px;
+    }
+
+    .mat-mdc-row:hover .mat-mdc-cell {
+      background-color: var(--gray5);
     }
 
     .image {

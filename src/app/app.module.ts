@@ -10,12 +10,14 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { CoursesListComponent } from './containers/courses-list/courses-list.component';
 import { MatTableModule } from '@angular/material/table';
+import { ObjectPropertyPipe } from './pipes/object-property.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
-    CoursesListComponent
+    CoursesListComponent,
+    ObjectPropertyPipe
   ],
   imports: [
     BrowserModule,

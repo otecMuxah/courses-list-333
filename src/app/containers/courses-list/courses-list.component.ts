@@ -18,6 +18,10 @@ export class CoursesListComponent implements OnInit{
   ngOnInit() {
     this.coursesList$ = this.coursesService.getCoursesList();
   }
+
+  selectCourse(course: CourseItemType) {
+    console.log('**', course);
+  }
 }
 
 
