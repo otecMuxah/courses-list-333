@@ -1,7 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CourseItemType } from '../../models/course-item.type';
 import { CoursesService } from '../../services/courses.service';
-import { Observable, of } from 'rxjs';
+import { debounceTime, distinctUntilChanged, take } from 'rxjs';
+import { ColumnFilterType } from '../../models/column-filter.type';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-courses-list',
@@ -11,16 +13,71 @@ import { Observable, of } from 'rxjs';
 })
 export class CoursesListComponent implements OnInit{
   displayedColumns = ['id', 'image', 'name', 'status'];
-  coursesList$: Observable<CourseItemType[]> = of([]);
+  filterCols: ColumnFilterType[] = [
+    {name: 'Course Name', column: 'name'},
+    {name: 'Course Status', column: 'status'},
+    {name: 'Course Instructor', column: 'instructors'},
+  ];
+  coursesList: CourseItemType[] = [];
+  coursesListFiltered: CourseItemType[] = [];
 
-  constructor(public coursesService: CoursesService) { }
+  form: FormGroup;
+
+  constructor(
+    public coursesService: CoursesService,
+    private changeDetectorRef: ChangeDetectorRef,
+    private fb: FormBuilder,
+    ) {
+    this.form = this.fb.group({
+      selectedProperty: [''],
+      searchValue: [''],
+    });
+  }
 
   ngOnInit() {
-    this.coursesList$ = this.coursesService.getCoursesList();
+    this.coursesService.getCoursesList().pipe(
+      take(1)
+    ).subscribe( (data: CourseItemType[]) => {
+      this.coursesList = data;
+      this.coursesListFiltered = data;
+    });
+
+    this.form.valueChanges.pipe(
+      debounceTime(300),
+      distinctUntilChanged()
+    ).subscribe(() => {
+      this.applyFilters();
+    });
   }
 
   selectCourse(course: CourseItemType) {
     console.log('**', course);
+  }
+
+  public trackBy(index: number): number {
+    return index;
+  }
+
+  applyFilters(): void {
+    const { selectedProperty, searchValue } = this.form.value;
+
+    if (selectedProperty && searchValue) {
+      this.coursesListFiltered = this.coursesList.filter((course: CourseItemType) =>{
+        if (selectedProperty === 'instructors') {
+          return course[selectedProperty].map(item => item['name']).join(', ').toLowerCase().includes(searchValue.toLowerCase());
+        } else {
+          return course[selectedProperty].toLowerCase().includes(searchValue.toLowerCase());
+        }
+      });
+    } else {
+      this.coursesListFiltered = this.coursesList;
+    }
+    this.changeDetectorRef.markForCheck();
+  }
+
+  clearFilter(): void {
+    this.coursesListFiltered = this.coursesList;
+    this.form.reset();
   }
 }
 

@@ -1,8 +1,26 @@
 <div class="wrapper">
   <div class="title">Courses</div>
   <div class="content">
-    <section *ngIf="(coursesList$ | async) as coursesList" class="container" tabindex="0">
-      <table mat-table [dataSource]="coursesList">
+    <div class="filter" [formGroup]="form">
+      <div class="filter-by">
+        Filter by:
+        <mat-form-field>
+          <mat-select formControlName="selectedProperty">
+            <mat-option  *ngFor="let col of filterCols; trackBy: trackBy"
+              [value]="col.column"><span class="col-name">{{col.name}}</span></mat-option>
+          </mat-select>
+        </mat-form-field>
+        <a class="clear-button" (click)="clearFilter()">Clear</a>
+      </div>
+      <div class="search">
+        <mat-form-field>
+          <input formControlName="searchValue" matInput placeholder="Search courses" >
+        </mat-form-field>
+      </div>
+    </div>
+
+    <section *ngIf="coursesList" class="container" tabindex="0">
+      <table mat-table [dataSource]="coursesListFiltered">
 
         <!-- Id Column -->
         <ng-container matColumnDef="id">
@@ -23,7 +41,9 @@
           <th mat-header-cell *matHeaderCellDef> Name </th>
           <td mat-cell *matCellDef="let element">
             <div class="course-title">{{element.name}}</div>
-            <div><span class="instructors">Instructors:</span> {{ element['instructors'] | objectProperty:'name' }}</div>
+            <div><span class="instructors">Instructors:</span>
+              {{ element['instructors'] | objectProperty:'name' }}
+            </div>
           </td>
         </ng-container>
 

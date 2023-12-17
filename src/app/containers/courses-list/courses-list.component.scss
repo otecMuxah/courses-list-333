@@ -26,6 +26,31 @@
     font-weight: 500;
   }
 
+  .filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 12px;
+
+    .filter-by {
+      margin-left: 12px;
+
+      .clear-button {
+        margin-left: 12px;
+        color: var(--main-color);
+        cursor: pointer;
+      }
+    }
+
+    .search {
+      margin-right: 12px;
+    }
+  }
+
+  .col-name {
+  }
+
   .content {
     display: flex;
     flex-direction: column;
@@ -46,6 +71,7 @@
 
     .mat-mdc-row:hover .mat-mdc-cell {
       background-color: var(--gray5);
+      cursor: pointer;
     }
 
     .image {
@@ -63,7 +89,7 @@
 
     .container {
       width: 100%;
-      border-radius: 12px;
+      margin-bottom: 24px;
       overflow: auto;
     }
 

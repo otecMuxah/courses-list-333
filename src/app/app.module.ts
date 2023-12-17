@@ -11,6 +11,9 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { CoursesListComponent } from './containers/courses-list/courses-list.component';
 import { MatTableModule } from '@angular/material/table';
 import { ObjectPropertyPipe } from './pipes/object-property.pipe';
+import { MatSelectModule } from '@angular/material/select';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { ObjectPropertyPipe } from './pipes/object-property.pipe';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatTableModule
+    MatTableModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    MatInputModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
   bootstrap: [AppComponent]
