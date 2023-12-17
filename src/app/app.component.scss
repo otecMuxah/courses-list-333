@@ -5,24 +5,3 @@ html {
     font-family: 'OpenSans', serif;
   }
 }
-
-.wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  background: var(--gray4);
-
-  .content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    //padding: 48px;
-    border-radius: 12px;
-    width: 90%;
-    height: 80%;
-    background: var(--white);
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.08), 0 0 4px 0 rgba(0, 0, 0, 0.04);
-  }
-}

@@ -28,10 +28,43 @@
     background: var(--white);
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.08), 0 0 4px 0 rgba(0, 0, 0, 0.04);
 
+
+    .mat-mdc-header-cell {
+      background-color: var(--gray3);
+      color: var(--dark-blue);
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .image {
+      width: 100px;
+      height: 100px;
+    }
+
+    .status {
+      padding: 5px;
+      border: 1px solid var(--green);
+      width: max-content;
+      border-radius: 5px;
+      font-size: 12px;
+    }
+
     .container {
       width: 100%;
       border-radius: 12px;
       overflow: auto;
+    }
+
+    .mat-column-id {
+      width: 50px;
+    }
+
+    .mat-column-image {
+      width: 110px;
+    }
+
+    .mat-column-status {
+      width: 200px;
     }
 
     table {
