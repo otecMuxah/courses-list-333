@@ -1,18 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { CoursesListComponent } from './containers/courses-list/courses-list.component';
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   redirectTo: '/courses',
-  //   pathMatch: 'full'
-  // },
-  // {
-  //   path: 'courses',
-  //   component: ,
-  // },
-  //
+  {
+    path: '',
+    redirectTo: '/courses',
+    pathMatch: 'full'
+  },
+  {
+    path: 'courses',
+    component: CoursesListComponent,
+  },
+
   {
     path: 'page-not-found',
     component: PageNotFoundComponent,
