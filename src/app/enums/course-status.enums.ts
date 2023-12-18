@@ -1,4 +1,4 @@
 export enum CourseStatusEnums {
-  draft ='DRAFT',
+  draft = 'DRAFT',
   published = 'PUBLISHED'
 }

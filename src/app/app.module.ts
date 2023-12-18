@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { MatButtonModule } from '@angular/material/button';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { CoursesListComponent } from './containers/courses-list/courses-list.component';
 import { MatTableModule } from '@angular/material/table';
@@ -17,6 +17,7 @@ import { MatInputModule } from '@angular/material/input';
 import { CourseDetailsComponent } from './containers/course-details/course-details.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { MatIconModule } from '@angular/material/icon';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatTableModule,
@@ -37,6 +39,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatInputModule,
     MatChipsModule,
     MatIconModule,
+    ToastrModule.forRoot(),
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
   bootstrap: [AppComponent]

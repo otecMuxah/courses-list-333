@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { CoursesService } from '../../services/courses.service';
@@ -26,6 +26,7 @@ export class CourseDetailsComponent implements OnInit {
   constructor(
     public activeRoute: ActivatedRoute,
     public coursesService: CoursesService,
+    private changeDetectorRef: ChangeDetectorRef,
     private router: Router,
     private fb: FormBuilder,
     ) {
@@ -35,9 +36,11 @@ export class CourseDetailsComponent implements OnInit {
     this.courseId = this.activeRoute.snapshot.params['id'];
     if (this.courseId && !isNaN(this.courseId)) {
       this.coursesService.getCourse(this.courseId).pipe(take(1)).subscribe( course => {
+        console.log('**', course);
         this.course = course;
         this.instructors = course.instructors;
         this._initForm(this.course);
+        this.changeDetectorRef.markForCheck();
       } );
     } else {
       this.router.navigate(['page-not-found']);

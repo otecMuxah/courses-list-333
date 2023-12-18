@@ -42,6 +42,7 @@ export class CoursesListComponent implements OnInit{
     ).subscribe( (data: CourseItemType[]) => {
       this.coursesList = data;
       this.coursesListFiltered = data;
+      this.changeDetectorRef.markForCheck();
     });
 
     this.form.valueChanges.pipe(
