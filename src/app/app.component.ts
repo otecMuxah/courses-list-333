@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { SpinnerService } from './services/spiner.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  isLoad$: Observable<boolean>;
+  constructor(private spinnerService: SpinnerService) {
+    this.isLoad$ = this.spinnerService.spinnerState;
+  }
   title = 'e-learn-dev';
 }
 

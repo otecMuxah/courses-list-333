@@ -18,6 +18,7 @@ import { CourseDetailsComponent } from './containers/course-details/course-detai
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { ToastrModule } from 'ngx-toastr';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { ToastrModule } from 'ngx-toastr';
     MatInputModule,
     MatChipsModule,
     MatIconModule,
+    MatProgressSpinnerModule,
     ToastrModule.forRoot(),
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],

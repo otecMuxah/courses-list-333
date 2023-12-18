@@ -5,17 +5,19 @@ import {
   HttpEvent,
   HttpInterceptor, HttpErrorResponse
 } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { finalize, Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 import { ToastrOptions } from '../app.component';
+import { SpinnerService } from '../services/spiner.service';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
 
-  constructor(private toastr: ToastrService) {}
+  constructor(private toastr: ToastrService, private spinnerService: SpinnerService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    this.spinnerService.show();
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
         let errorMessage: string;
@@ -29,6 +31,9 @@ export class ErrorInterceptor implements HttpInterceptor {
         this.toastr.error(errorMessage, '', ToastrOptions);
 
         return throwError(errorMessage);
+      }),
+      finalize(() => {
+        this.spinnerService.hide();
       })
     );
   }
