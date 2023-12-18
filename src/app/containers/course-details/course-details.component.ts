@@ -36,7 +36,6 @@ export class CourseDetailsComponent implements OnInit {
     this.courseId = this.activeRoute.snapshot.params['id'];
     if (this.courseId && !isNaN(this.courseId)) {
       this.coursesService.getCourse(this.courseId).pipe(take(1)).subscribe( course => {
-        console.log('**', course);
         this.course = course;
         this.instructors = course.instructors;
         this._initForm(this.course);
@@ -66,14 +65,14 @@ export class CourseDetailsComponent implements OnInit {
   }
 
   remove(instructor: InstructorsType): void {
-    //ToDo implement when creating a edit mode
+    //ToDo implement when creating an edit mode
   }
 
   edit(instructor: InstructorsType, event: MatChipEditedEvent): void {
-    //ToDo implement when creating a edit mode
+    //ToDo implement when creating an edit mode
   }
 
   add(event: MatChipInputEvent): void {
-    //ToDo implement when creating a edit mode
+    //ToDo implement when creating an edit mode
   }
 }
