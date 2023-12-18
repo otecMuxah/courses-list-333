@@ -14,13 +14,17 @@ import { ObjectPropertyPipe } from './pipes/object-property.pipe';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { CourseDetailsComponent } from './containers/course-details/course-details.component';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
     CoursesListComponent,
-    ObjectPropertyPipe
+    ObjectPropertyPipe,
+    CourseDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +34,9 @@ import { MatInputModule } from '@angular/material/input';
     MatTableModule,
     MatSelectModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatChipsModule,
+    MatIconModule,
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
   bootstrap: [AppComponent]

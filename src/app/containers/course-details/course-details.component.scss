@@ -1,0 +1,33 @@
+.wrapper {
+  flex-direction: column;
+  .back {
+    width: var(--main-size);
+    margin-bottom: 12px;
+    font-size: 16px;
+    color: var(--main-color);
+    cursor: pointer;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 24px;
+    gap: 24px;
+    width: var(--main-size);
+
+    .col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 50%;
+    }
+
+    .title {
+      font-size: 16px;
+      color: var(--dark-blue);
+    }
+  }
+}

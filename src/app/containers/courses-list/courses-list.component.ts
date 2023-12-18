@@ -4,6 +4,7 @@ import { CoursesService } from '../../services/courses.service';
 import { debounceTime, distinctUntilChanged, take } from 'rxjs';
 import { ColumnFilterType } from '../../models/column-filter.type';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-courses-list',
@@ -26,6 +27,7 @@ export class CoursesListComponent implements OnInit{
   constructor(
     public coursesService: CoursesService,
     private changeDetectorRef: ChangeDetectorRef,
+    private router: Router,
     private fb: FormBuilder,
     ) {
     this.form = this.fb.group({
@@ -51,7 +53,7 @@ export class CoursesListComponent implements OnInit{
   }
 
   selectCourse(course: CourseItemType) {
-    console.log('**', course);
+    this.router.navigate(['courses', course.id]);
   }
 
   public trackBy(index: number): number {

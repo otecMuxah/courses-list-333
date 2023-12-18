@@ -1,10 +1,5 @@
-import { InstructorsType } from './instructors.type';
-import { CourseStatusEnums } from '../enums/course-status.enums';
+import { CourseBaseType } from './course-base.type';
 
-export type CourseItemType = {
-  id: number,
-  name: string,
+export type CourseItemType = CourseBaseType & {
   image: string,
-  status: CourseStatusEnums,
-  instructors: InstructorsType[];
 }

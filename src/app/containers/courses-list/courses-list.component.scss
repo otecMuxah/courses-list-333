@@ -4,11 +4,8 @@
 }
 
 .wrapper {
-  display: flex;
-  align-items: center;
   flex-direction: column;
-  height: 100%;
-  background-color: var(--gray5);
+  justify-content: flex-start;
 
   .title {
     width: var(--main-size);
@@ -52,15 +49,7 @@
   }
 
   .content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 12px;
     width: var(--main-size);
-    background: var(--white);
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.08), 0 0 4px 0 rgba(0, 0, 0, 0.04);
-
 
     .mat-mdc-header-cell {
       background-color: var(--gray3);
