@@ -5,12 +5,12 @@
       <div class="w-100">
         <div class="title">Course Name</div>
         <mat-form-field class="w-100">
-          <input formControlName="name" matInput placeholder="Course name" >
+          <input formControlName="name" matInput placeholder="Course name" />
         </mat-form-field>
       </div>
       <div class="w-100">
         <div class="title">Course Card Image</div>
-        <img class="image" [src]="course.images[0]" alt="Course image"  />
+        <img class="image" [src]="course.images[0]" alt="Course image" />
       </div>
     </div>
     <div class="col">
@@ -18,32 +18,42 @@
         <div class="title">Course Status</div>
         <mat-form-field class="w-100">
           <mat-select formControlName="status">
-            <mat-option  *ngFor="let status of courseStatus; trackBy: trackBy"
-                         [value]="status"><span class="col-name">{{status}}</span></mat-option>
+            <mat-option
+              *ngFor="let status of courseStatus; trackBy: trackBy"
+              [value]="status"
+              ><span class="col-name">{{ status }}</span></mat-option
+            >
           </mat-select>
         </mat-form-field>
       </div>
       <div class="w-100">
         <div class="title">Instructor</div>
         <mat-form-field class="chip-list w-100">
-          <mat-chip-grid #chipGrid aria-label="Enter instructor" formControlName="instructors">
-
-            <mat-chip-row *ngFor="let instructor of instructors; trackBy: trackBy"
-              (removed)="remove(instructor)"
+          <mat-chip-grid
+            #chipGrid
+            aria-label="Enter instructor"
+            formControlName="instructors"
+          >
+            <mat-chip-row
+              *ngFor="let instructor of instructors; trackBy: trackBy"
               [editable]="true"
-              (edited)="edit(instructor, $event)"
-              [aria-description]="'press enter to edit ' + instructor.name">
-            {{instructor.name}}
-            <button matChipRemove [attr.aria-label]="'remove ' + instructor.name">
-              <mat-icon>cancel</mat-icon>
-            </button>
-          </mat-chip-row>
+              [aria-description]="'press enter to edit ' + instructor.name"
+            >
+              {{ instructor.name }}
+              <button
+                matChipRemove
+                [attr.aria-label]="'remove ' + instructor.name"
+              >
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip-row>
 
             <input
-                   [matChipInputFor]="chipGrid"
-                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                   [matChipInputAddOnBlur]="true"
-                   (matChipInputTokenEnd)="add($event)"/>
+              [matChipInputFor]="chipGrid"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              [matChipInputAddOnBlur]="true"
+            />
+            <!-- chips logic is not implemented, and it was to push/splice instructors array -->
           </mat-chip-grid>
         </mat-form-field>
       </div>

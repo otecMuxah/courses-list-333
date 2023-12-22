@@ -5,10 +5,11 @@ import { Router } from '@angular/router';
   selector: 'app-page-not-found',
   templateUrl: './page-not-found.component.html',
   styleUrls: ['./page-not-found.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PageNotFoundComponent {
-  constructor(private router: Router,) {
+  constructor(private router: Router) {
+    // only place with trailing comma
   }
 
   toMainPage() {

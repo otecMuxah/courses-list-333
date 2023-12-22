@@ -1,9 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 :root {
+  // most of the colors are unused here
   --main-color: #6575ff;
   --dark-blue: #283261;
   --blue-green: #49a6b4;
@@ -37,8 +44,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   --white-background: #f7f8fb;
   --error-red: #ff5454;
 
-  --green: #054E18FF;
-
+  --green: #054e18ff;
 
   --main-size: 1200px;
 }
@@ -58,7 +64,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     border-radius: 12px;
     background: var(--white);
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.08), 0 0 4px 0 rgba(0, 0, 0, 0.04);
-
   }
 }
 

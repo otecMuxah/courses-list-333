@@ -1,8 +1,9 @@
 html {
+  // why not in style.scss ? why different font family ?
   body {
     height: 100%;
     width: 100%;
-    font-family: 'OpenSans', serif;
+    font-family: "OpenSans", serif;
   }
 }
 

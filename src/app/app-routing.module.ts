@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: '/courses',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'courses',
@@ -16,22 +16,22 @@ const routes: Routes = [
   },
   {
     path: 'courses/:id',
-    component: CourseDetailsComponent,
-    pathMatch: 'full'
+    component: CourseDetailsComponent, // no lazy loading
+    pathMatch: 'full',
   },
 
   {
     path: 'page-not-found',
-    component: PageNotFoundComponent,
+    component: PageNotFoundComponent, // no lazy loading
   },
   {
     path: '**',
-    component: PageNotFoundComponent
-  }
+    component: PageNotFoundComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

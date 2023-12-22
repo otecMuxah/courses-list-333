@@ -20,7 +20,8 @@
       </div>
     </div>
 
-    <section *ngIf="coursesList" class="container" tabindex="0">
+    <!-- why no trackBy here ? this data really needs trackBy , and filters dont -->
+    <section *ngIf="coursesList" class="container" tabindex="0"> 
       <table mat-table [dataSource]="coursesListFiltered">
 
         <!-- Id Column -->

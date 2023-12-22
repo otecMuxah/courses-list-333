@@ -3,7 +3,8 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor, HttpErrorResponse
+  HttpInterceptor,
+  HttpErrorResponse,
 } from '@angular/common/http';
 import { finalize, Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -13,10 +14,15 @@ import { SpinnerService } from '../services/spiner.service';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
+  constructor(
+    private toastr: ToastrService,
+    private spinnerService: SpinnerService
+  ) {}
 
-  constructor(private toastr: ToastrService, private spinnerService: SpinnerService) {}
-
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+  intercept(
+    request: HttpRequest<unknown>,
+    next: HttpHandler
+  ): Observable<HttpEvent<unknown>> {
     this.spinnerService.show();
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
@@ -29,7 +35,7 @@ export class ErrorInterceptor implements HttpInterceptor {
         }
 
         this.toastr.error(errorMessage, '', ToastrOptions);
-
+        // why no redirect to not-found page, user see broken detail page instead
         return throwError(errorMessage);
       }),
       finalize(() => {
